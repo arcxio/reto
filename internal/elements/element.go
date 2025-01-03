@@ -12,37 +12,6 @@ type Element interface {
 	Closing() string
 }
 
-type Wrapper struct {
-	opening string
-	closing string
-}
-
-func (el Wrapper) Opening() string {
-	return el.opening
-}
-
-func (_ Wrapper) Content(text string) string {
-	return text
-}
-
-func (el Wrapper) Closing() string {
-	return el.closing
-}
-
-type Nop struct{}
-
-func (_ Nop) Opening() string {
-	return ""
-}
-
-func (_ Nop) Content(text string) string {
-	return text
-}
-
-func (_ Nop) Closing() string {
-	return ""
-}
-
 var atomToElementCreator = map[atom.Atom]func(p *printer.Printer) Element{
 	atom.A:      func(p *printer.Printer) Element { return &Link{p: p} },
 	atom.B:      func(p *printer.Printer) Element { return &Strong{p} },

@@ -24,7 +24,6 @@ func TestHeading(t *testing.T) {
 		assert(t, printer.AnsiStyle, input, "\033[1m# Level 1 heading\033[22m")
 		assert(t, printer.TviewStyle, input, "[::b]# Level 1 heading[::B]")
 	})
-
 	t.Run("level 2", func(t *testing.T) {
 		input := "<h2>Level 2 heading</h2>"
 		assert(t, printer.NoStyle, input, "## Level 2 heading")
